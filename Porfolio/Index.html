@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mesange Antoine – Portfolio BTS SIO</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --noir:   #0c0c0c;
-      --blanc:  #f4f3ef;
-      --accent: #894B0A;
-      --gris:   #161616;
-      --gris2:  #1f1f1f;
-      --muted:  #888;
+    /* ── THEMES ── */
+    [data-theme="dark"] {
+      --noir:        #0c0c0c;
+      --blanc:       #f4f3ef;
+      --accent:      #894B0A;
+      --gris:        #161616;
+      --gris2:       #1f1f1f;
+      --muted:       #888;
+      --nav-bg:      rgba(12,12,12,0.95);
+      --sep-color:   #1a1a1a;
+      --border:      #2e2e2e;
+      --tag-border:  #2e2e2e;
+      --info-bg:     #2a2a2a;
+      --bar-bg:      #2a2a2a;
     }
+    [data-theme="light"] {
+      --noir:       #D9D7D2;
+      --blanc:       #111111;
+      --accent:      #894B0A;
+      --gris:        #e8e7e3;
+      --gris2:       #dddcd8;
+      --muted:       #555;
+      --nav-bg:      rgba(245,244,240,0.97);
+      --sep-color:   #d0cfc9;
+      --border:      #ccc;
+      --tag-border:  #ccc;
+      --info-bg:     #ccc;
+      --bar-bg:      #ccc;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -22,6 +44,7 @@
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       line-height: 1.75;
+      transition: background .3s, color .3s;
     }
 
     /* BANDE ACCENT */
@@ -33,9 +56,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 6vw;
-      border-bottom: 1px solid #1e1e1e;
+      border-bottom: 1px solid var(--sep-color);
       position: sticky; top: 0; z-index: 100;
-      background: rgba(12,12,12,0.95);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
     }
     .nav-logo {
@@ -47,6 +70,7 @@
       text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav ul a {
       color: var(--muted);
@@ -58,6 +82,20 @@
     }
     nav ul a:hover { color: var(--blanc); }
     nav ul a.active { color: var(--blanc); }
+
+    /* TOGGLE THEME */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: border-color .2s, color .2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
     /* HERO */
     .hero {
@@ -94,7 +132,7 @@
     }
     .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
     .tag {
-      border: 1px solid #2e2e2e;
+      border: 1px solid var(--tag-border);
       color: var(--muted);
       font-size: .72rem;
       padding: .28rem .85rem;
@@ -102,10 +140,12 @@
       text-transform: uppercase;
     }
     .tag.hot { border-color: var(--accent); color: var(--accent); }
+
+    .btns-row { display: flex; gap: .8rem; flex-wrap: wrap; }
     .btn {
       display: inline-block;
       background: var(--accent);
-      color: var(--blanc);
+      color: #f4f3ef;
       text-decoration: none;
       padding: .72rem 1.8rem;
       font-family: 'Syne', sans-serif;
@@ -116,12 +156,27 @@
       transition: opacity .2s;
     }
     .btn:hover { opacity: .82; }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      padding: .72rem 1.8rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+    }
+    .btn-outline:hover { background: var(--accent); color: #f4f3ef; }
 
     /* HERO CARD */
     .hero-card {
       justify-self: center;
       width: 250px;
-      border: 1px solid #222;
+      border: 1px solid var(--border);
       border-top: 3px solid var(--accent);
       padding: 2.4rem 1.8rem 2rem;
       text-align: center;
@@ -130,7 +185,7 @@
     .avatar-circle {
       width: 88px; height: 88px;
       border-radius: 50%;
-      background: #222;
+      background: var(--info-bg);
       border: 2px solid var(--accent);
       display: flex; align-items: center; justify-content: center;
       font-family: 'Syne', sans-serif;
@@ -155,12 +210,8 @@
     .info-line svg { flex-shrink: 0; margin-top: 2px; }
 
     /* SECTIONS */
-    .section-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4.5rem 6vw;
-    }
-    .sep { height: 1px; background: #1a1a1a; max-width: 1100px; margin: 0 auto; }
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 4.5rem 6vw; }
+    .sep { height: 1px; background: var(--sep-color); max-width: 1100px; margin: 0 auto; }
     .sec-label {
       font-family: 'Syne', sans-serif;
       font-size: .68rem;
@@ -221,8 +272,35 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--blanc);
-      margin-bottom: .9rem;
+      margin-bottom: 1rem;
     }
+    /* BARRES DE PROGRESSION */
+    .skill-bar-item { margin-bottom: .85rem; }
+    .skill-bar-item:last-child { margin-bottom: 0; }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .3rem;
+    }
+    .skill-bar-label span:last-child { color: var(--accent); font-weight: 600; font-family: 'Syne', sans-serif; font-size: .72rem; }
+    .skill-bar-track {
+      width: 100%;
+      height: 4px;
+      background: var(--bar-bg);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    /* ancienne liste pour qualités */
     .sk-card ul { list-style: none; display: flex; flex-direction: column; gap: .38rem; }
     .sk-card ul li {
       font-size: .86rem;
@@ -247,7 +325,7 @@
       align-items: flex-start;
       padding: 1.4rem 1.8rem;
       background: var(--gris2);
-      border-left: 3px solid #2a2a2a;
+      border-left: 3px solid var(--border);
     }
     .form-item.active { border-left-color: var(--accent); }
     .form-year {
@@ -271,7 +349,7 @@
     .soft-grid { display: flex; flex-wrap: wrap; gap: .6rem; }
     .soft-tag {
       background: var(--gris2);
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--border);
       font-size: .82rem;
       color: var(--muted);
       padding: .4rem 1rem;
@@ -279,14 +357,14 @@
 
     /* FOOTER */
     footer {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid var(--sep-color);
       margin-top: 2rem;
       padding: 1.8rem 6vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: .76rem;
-      color: #3a3a3a;
+      color: var(--muted);
     }
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { opacity: .8; }
@@ -307,11 +385,14 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">AM<span>.</span></a>
-  <ul>
-    <li><a href="index.html" class="active">Accueil</a></li>
-    <li><a href="projets.html">Projets</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul>
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">🌙</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -327,10 +408,14 @@
     <div class="tags">
       <span class="tag hot">BTS SIO 2024–2026</span>
       <span class="tag">Réseaux</span>
-      <span class="tag">Hyperviseur</span>
+      <span class="tag">Développement</span>
       <span class="tag">Linux / Windows</span>
+      <span class="tag">Permis B – Véhiculé</span>
     </div>
-    <a href="contact.html" class="btn">Me contacter</a>
+    <div class="btns-row">
+      <a href="contact.html" class="btn">Me contacter</a>
+      <a href="Mesange_Antoine_Portfolio.pdf" download class="btn-outline">⬇ Télécharger le CV</a>
+    </div>
   </div>
 
   <div class="hero-card">
@@ -358,7 +443,6 @@
 <div class="section-wrap" id="formations">
   <div class="sec-label">Parcours académique</div>
   <div class="sec-title">Formations</div>
-
   <div class="formations">
     <div class="form-item active">
       <div class="form-year">2024 – 2026</div>
@@ -390,7 +474,6 @@
 <div class="section-wrap" id="experience">
   <div class="sec-label">Parcours</div>
   <div class="sec-title">Expériences Professionnelles</div>
-
   <div class="timeline">
 
     <div class="tl-item">
@@ -467,31 +550,66 @@
   <div class="sec-title">Compétences Techniques</div>
 
   <div class="skills-grid">
+
+    <!-- Programmation -->
     <div class="sk-card">
       <h3>Programmation</h3>
-      <ul>
-        <li>HTML / CSS – bases</li>
-        <li>Python – bases</li>
-        <li>C# – bases</li>
-      </ul>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>HTML / CSS</span><span>Bases</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="45"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Python</span><span>Bases</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="40"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>C#</span><span>Bases</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="35"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>PHP</span><span>Bases</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="35"></div></div>
+      </div>
     </div>
+
+    <!-- Systèmes -->
     <div class="sk-card">
       <h3>Systèmes</h3>
-      <ul>
-        <li>Linux – utilisation pratique</li>
-        <li>Windows – utilisation pratique</li>
-        <li>Active Directory – notions</li>
-      </ul>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Windows</span><span>Pratique</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Linux</span><span>Pratique</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Active Directory</span><span>Notions</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="40"></div></div>
+      </div>
     </div>
+
+    <!-- Réseaux -->
     <div class="sk-card">
       <h3>Réseaux</h3>
-      <ul>
-        <li>Cisco – notions</li>
-        <li>Gestion réseau</li>
-        <li>Création d'un parc informatique (BTS SIO)</li>
-        <li><a href="#" title="Documentation parc informatique Orléans">Documentation – Parc informatique Orléans</a></li>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Gestion réseau</span><span>Pratique</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Cisco</span><span>Notions</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="40"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Parc informatique</span><span>BTS SIO</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
+      </div>
+      <ul style="margin-top:.8rem">
+        <li><a href="#" title="Documentation parc informatique Orléans">📄 Documentation – Parc Orléans</a></li>
       </ul>
     </div>
+
+    <!-- Qualités -->
     <div class="sk-card">
       <h3>Qualités</h3>
       <ul>
@@ -502,6 +620,7 @@
         <li>Perspicace</li>
       </ul>
     </div>
+
   </div>
 </div>
 
@@ -529,10 +648,41 @@
     &nbsp;·&nbsp; 06 11 53 51 87
     <div class="info-line">
   <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-  <a href="https://www.linkedin.com/in/antoine-mesange/" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
+  <a href="https://www.linkedin.com/in/antoine-mesange" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
 </div>
   </span>
 </footer>
+
+<script>
+  // ── THEME TOGGLE ──
+  const btn = document.querySelector('.theme-toggle');
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    btn.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+  // Restore saved theme
+  const saved = localStorage.getItem('theme');
+  if (saved && saved !== 'dark') {
+    document.documentElement.setAttribute('data-theme', saved);
+    btn.textContent = '☀️';
+  }
+
+  // ── BARRES DE PROGRESSION (animation au scroll) ──
+  const fills = document.querySelectorAll('.skill-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.style.width = el.dataset.width + '%';
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+  fills.forEach(f => observer.observe(f));
+</script>
 
 </body>
 </html>
