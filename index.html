@@ -3,7 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mesange Antoine – Portfolio BTS SIO</title>
+
+  <!-- ── SEO PRINCIPAL ── -->
+  <title>Antoine Mesange – Portfolio BTS SIO | Réseaux & Développement</title>
+  <meta name="description" content="Portfolio de Antoine Mesange, étudiant BTS SIO spécialité SISR au Lycée Fulbert de Chartres. Compétences en réseaux, Linux, Windows, PHP et développement web."/>
+  <meta name="keywords" content="Antoine Mesange, Mesange Antoine, BTS SIO, SISR, portfolio, informatique, réseaux, Chartres, Lycée Fulbert, développement web, Linux, PHP"/>
+  <meta name="author" content="Antoine Mesange"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://mesangeantoine.fr/"/>
+
+  <!-- ── OPEN GRAPH (partage réseaux sociaux / Google) ── -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Antoine Mesange – Portfolio BTS SIO"/>
+  <meta property="og:description" content="Portfolio de Antoine Mesange, étudiant BTS SIO au Lycée Fulbert de Chartres. Réseaux, Linux, développement web."/>
+  <meta property="og:url" content="https://mesangeantoine.fr/"/>
+  <meta property="og:locale" content="fr_FR"/>
+
+  <!-- ── STRUCTURED DATA (JSON-LD) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Antoine Mesange",
+    "alternateName": "Mesange Antoine",
+    "url": "https://mesangeantoine.fr/",
+    "email": "antoine.mesange@gmail.com",
+    "jobTitle": "Étudiant BTS SIO – SISR",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Lycée Fulbert",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chartres",
+        "addressCountry": "FR"
+      }
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/antoine-mesange"
+    ]
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     /* ── THEMES ── */
@@ -22,18 +62,18 @@
       --bar-bg:      #2a2a2a;
     }
     [data-theme="light"] {
-      --noir:       #D9D7D2;
-      --blanc:       #111111;
+      --noir:        #F5F0E8;
+      --blanc:       #1a1a1a;
       --accent:      #894B0A;
-      --gris:        #e8e7e3;
-      --gris2:       #dddcd8;
-      --muted:       #555;
-      --nav-bg:      rgba(245,244,240,0.97);
-      --sep-color:   #d0cfc9;
-      --border:      #ccc;
-      --tag-border:  #ccc;
-      --info-bg:     #ccc;
-      --bar-bg:      #ccc;
+      --gris:        #EDE8DF;
+      --gris2:       #E6E0D6;
+      --muted:       #666;
+      --nav-bg:      rgba(245,240,232,0.97);
+      --sep-color:   #D8D0C4;
+      --border:      #C8C0B4;
+      --tag-border:  #C8C0B4;
+      --info-bg:     #D8D0C4;
+      --bar-bg:      #D8D0C4;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -388,8 +428,8 @@
   <div class="nav-right">
     <ul>
       <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="Porfolio/projets.html">Projets</a></li>
-      <li><a href="Porfolio/contact.html">Contact</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">🌙</button>
   </div>
@@ -413,9 +453,9 @@
       <span class="tag">Systèmes</span>
     </div>
     <div class="btns-row">
-      <a href="Porfolio/contact.html" class="btn">Me contacter</a>
+      <a href="contact.html" class="btn">Me contacter</a>
     </div>
-    <a href="Porfolio/en-construction.html" class="btn-outline" style="margin-top:.8rem;">⬇ Télécharger le CV</a>
+    <a href="en-construction.html" class="btn-outline" style="margin-top:.8rem;">⬇ Télécharger le CV</a>
   </div>
 
   <div class="hero-card">
@@ -428,7 +468,7 @@
     </div>
     <div class="info-line">
       <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      <a href="mailto:antoine.mesange@gmail.com" style="color: var(--muted); text-decoration: none;">antoine.mesange@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#36575842595f5853185b53455758515376515b575f5a1855595b" style="color: var(--muted); text-decoration: none;"><span class="__cf_email__" data-cfemail="ef8e819b8086818ac1828a9c8e81888aaf88828e8683c18c8082">[email&#160;protected]</span></a>
     </div>
   </div>
 </div>
@@ -640,7 +680,7 @@
 <footer>
   <span>© 2026 Mesange Antoine – Portfolio BTS SIO</span>
   <span>
-    <a href="Porfolio/contact.html">Me contacter</a>
+    <a href="contact.html">Me contacter</a>
     <div class="info-line">
   <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
   <a href="https://www.linkedin.com/in/antoine-mesange" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
@@ -648,7 +688,7 @@
   </span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── THEME TOGGLE ──
   const btn = document.querySelector('.theme-toggle');
   function toggleTheme() {
