@@ -18,6 +18,16 @@
   <meta property="og:description" content="Portfolio de Antoine Mesange, étudiant BTS SIO au Lycée Fulbert de Chartres. Réseaux, Linux, développement web."/>
   <meta property="og:url" content="https://mesangeantoine.fr/"/>
   <meta property="og:locale" content="fr_FR"/>
+  <meta property="og:image" content="https://mesangeantoine.fr/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="Antoine Mesange – Portfolio BTS SIO"/>
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Antoine Mesange – Portfolio BTS SIO"/>
+  <meta name="twitter:description" content="Portfolio de Antoine Mesange, étudiant BTS SIO au Lycée Fulbert de Chartres."/>
+  <meta name="twitter:image" content="https://mesangeantoine.fr/og-image.png"/>
 
   <!-- ── STRUCTURED DATA (JSON-LD) ── -->
   <script type="application/ld+json">
@@ -29,6 +39,7 @@
     "url": "https://mesangeantoine.fr/",
     "email": "antoine.mesange@gmail.com",
     "jobTitle": "Étudiant BTS SIO – SISR",
+    "image": "https://mesangeantoine.fr/og-image.png",
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "Lycée Fulbert",
@@ -418,9 +429,9 @@
     }
   </style>
   <link rel="icon" type="image/x-icon" href="Porfolio/favicon.ico"/>
-<link rel="icon" type="image/png" sizes="32x32" href="Porfolio/favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="Porfolio/favicon-16x16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="Porfolio/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="Porfolio/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="Porfolio/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="Porfolio/apple-touch-icon.png"/>
 </head>
 <body>
 
@@ -473,6 +484,10 @@
     <div class="info-line">
       <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       <a href="mailto:antoine.mesange@gmail.com" style="color: var(--muted); text-decoration: none;">antoine.mesange@gmail.com</a>
+    </div>
+    <div class="info-line">
+      <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <a href="https://www.linkedin.com/in/antoine-mesange" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
     </div>
   </div>
 </div>
@@ -685,15 +700,15 @@
 <footer>
   <span>© 2026 Mesange Antoine – Portfolio BTS SIO</span>
   <span>
-    <a href="Portfolio/contact.html">Me contacter</a>
+    <a href="Porfolio/contact.html">Me contacter</a>
     <div class="info-line">
-  <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-  <a href="https://www.linkedin.com/in/antoine-mesange" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
-</div>
+      <svg width="13" height="13" fill="none" stroke="#894B0A" stroke-width="1.8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      <a href="https://www.linkedin.com/in/antoine-mesange" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn – Mesange Antoine</a>
+    </div>
   </span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ── THEME TOGGLE ──
   const btn = document.querySelector('.theme-toggle');
   function toggleTheme() {
@@ -715,12 +730,12 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const el = entry.target;
-        el.style.width = el.dataset.width + '%';
-        observer.unobserve(el);
+        const fill = entry.target;
+        fill.style.width = fill.getAttribute('data-width') + '%';
+        observer.unobserve(fill);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
   fills.forEach(f => observer.observe(f));
 </script>
 
